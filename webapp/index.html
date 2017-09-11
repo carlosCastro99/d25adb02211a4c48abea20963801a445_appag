@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8">
+
+    <title>Aprovação de Pagamentos a fornecedores</title>
+
+    <script id="sap-ui-bootstrap"
+      src="resources/sap-ui-core.js"
+      data-sap-ui-libs="sap.m,sap.ui.commons"
+      data-sap-ui-theme="sap_bluecrystal"
+      data-sap-ui-xx-bindingSyntax="complex"
+      data-sap-ui-resourceroots='{"ZODK_AP_PAG": "./"}'
+      data-sap-ui-language="pt">
+    </script>
+    <script src="js/functions.js" charset="UTF-8"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href="./images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <script>
+    	var ret_router;
+        var gv_sentity;
+        var master_comp;
+        var det_comp;
+        var det_comp_mobile;
+        var det_prop;
+        var det_forn;
+        var component_aprov;
+        var controller_menu;
+        var lista_fornecedores_nivel = [];
+        var num_propostas_pendentes = 0;
+		var empresa_escolhida_data = undefined;
+		var controller_historico_user = undefined;
+		var controller_master_mobile = undefined;
+		var controller_historico_completo = undefined;
+		var data_proposta = [];
+		var data_fornecedor = [];
+		var data_fatura = [];
+		var data_historico_user_propostas = [];
+		var data_historico_completo_propostas = [];
+		var logoff_done = false;
+		
+		var app_aprov = new sap.ui.core.ComponentContainer({
+          height : "100%",
+          name : "ZODK_AP_PAG"
+        });
+
+        var app_menu = new sap.m.App();
+        var menuView = sap.ui.view({
+             id: "menuView",
+             viewName : "ZODK_AP_PAG.view.Menu",
+             type: sap.ui.core.mvc.ViewType.XML
+        });
+        app_menu.addPage(menuView);
+
+        var app_erro = new sap.m.App();
+        var erroView = sap.ui.view({
+             id: "erroView",
+             viewName : "ZODK_AP_PAG.view.ErrorPage",
+             type: sap.ui.core.mvc.ViewType.XML
+        });
+        app_erro.addPage(erroView);
+
+        var app_proposta = new sap.m.App();
+        var propostaView = sap.ui.view({
+             id: "propostaView",
+             viewName : "ZODK_AP_PAG.view.DetailProposta",
+             type: sap.ui.core.mvc.ViewType.XML
+        });
+        app_proposta.addPage(propostaView);
+
+        var app_fornecedor = new sap.m.App();
+        var fornecedorView = sap.ui.view({
+             id: "fornecedorView",
+             viewName : "ZODK_AP_PAG.view.DetailFornecedor",
+             type: sap.ui.core.mvc.ViewType.XML
+        });
+        app_fornecedor.addPage(fornecedorView);
+		
+		var app_hist = new sap.m.App();
+        var histView = sap.ui.view({
+             id: "histView",
+             viewName : "ZODK_AP_PAG.view.HistoricoUser",
+             type: sap.ui.core.mvc.ViewType.XML
+        });
+        app_hist.addPage(histView);
+        
+        var app_hist_comp = new sap.m.App();
+        var histCompView = sap.ui.view({
+             id: "histCompView",
+             viewName : "ZODK_AP_PAG.view.HistoricoCompleto",
+             type: sap.ui.core.mvc.ViewType.XML
+        });
+        app_hist_comp.addPage(histCompView);
+        
+        var app_master_mobile = new sap.m.App();
+        var masterMobileView = sap.ui.view({
+             id: "masterMobileView",
+             viewName : "ZODK_AP_PAG.view.MasterMobile",
+             type: sap.ui.core.mvc.ViewType.XML
+        });
+        app_master_mobile.addPage(masterMobileView);
+        
+        var detailMobileApp = new sap.m.App();
+        var detailMobileView = sap.ui.view({
+             id: "detailMobileView",
+             viewName : "ZODK_AP_PAG.view.DetailMobile",
+             type: sap.ui.core.mvc.ViewType.XML
+        });
+        detailMobileApp.addPage(detailMobileView);
+        
+        var oShell = new sap.m.Shell();
+        oShell.placeAt("content");
+        get_source();
+        call_authorization_check();
+        
+        window.onbeforeunload = function(){
+        	if (!logoff_done){
+        		dequeue_all();
+        	}
+        };
+    </script>
+  </head>
+
+  <body class="sapUiBody" id="body">
+  <div id="content" class="corpo"></div>
+  </body>
+
+</html>

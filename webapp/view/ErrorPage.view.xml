@@ -1,0 +1,20 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" controllerName="ZODK_AP_PAG.view.ErrorPage" displayBlock="true"
+	height="100%" class="view_back">
+	<App id="idAppError" showHeader="false" mode="StretchCompressMode">
+		<Page id="page" title="Aprovação de Pagamentos a Fornecedores" showHeader="true" enableScrolling="false">
+			<content>
+				<Image src="./images/ERROR_IMAGE.png" class="img_error"></Image>
+			</content>
+			<footer>
+				<Bar>
+					<contentLeft>
+						<Button text="Sair" icon="sap-icon://log" press="handleLogoff"/>
+					</contentLeft>
+					<contentRight>
+						<Image src="./images/logo_small.png" class="img_cockpit"></Image>
+					</contentRight>
+				</Bar>
+			</footer>
+		</Page>
+	</App>
+</mvc:View>

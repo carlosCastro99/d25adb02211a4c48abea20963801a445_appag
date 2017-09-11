@@ -1,0 +1,34 @@
+<mvc:View controllerName="ZODK_AP_PAG.view.MasterMobile" displayBlock="true" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" class="view_back">
+	<Page id="page" title="Empresas">
+		<subHeader>
+			<Bar id="searchBar">
+				<contentMiddle>
+					<SearchField id="searchFieldItem" showRefreshButton="true" search="onSearch" width="100%"></SearchField>
+				</contentMiddle>
+			</Bar>
+		</subHeader>
+		<content>
+			<List items="{/DadosPorEmpresaSet}" noDataText="( vazio )" growing="true" growingScrollToLoad="true">
+				<items>
+					<ObjectListItem type="Active" press="onListItemPress" title="{Nome}" number="{Codigo}" numberUnit="" icon="{= ${Rfc} === '' ? 'sap-icon://it-host' : 'sap-icon://connected' }">
+						<attributes>
+							<ObjectAttribute text="{NPropostas} proposta(s)"/>
+							<ObjectAttribute text="{ValorTotal} {Moeda}"/>
+							<ObjectAttribute text= "Empresa emissora: {CodigoEmpresaPagadora} {NomeEmpresaPagadora}" class="empresa_emissora" visible="{EmpresaPagadoraVisible}"/>
+						</attributes>
+					</ObjectListItem>
+				</items>
+			</List>
+		</content>
+		<footer>
+			<Bar>
+				<contentLeft>
+					<Button text="Menu" icon="sap-icon://nav-back" press="handleBack"/>
+				</contentLeft>
+				<contentRight>
+					<Image src="./images/logo_small.png" class="img_cockpit"></Image>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

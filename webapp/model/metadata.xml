@@ -1,0 +1,28 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZFI_AP_PAG_SRV" xml:lang="pt" sap:schema-version="1">
+            <EntityType Name="DadosPorEmpresa" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Codigo"/>
+                </Key>
+                <Property Name="Codigo" Type="Edm.String" Nullable="false" sap:label="Código da empresa" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Nome" Type="Edm.String" Nullable="false" sap:label="Nome da empresa" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Local" Type="Edm.String" Nullable="false" sap:label="Local" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NPropostas" Type="Edm.String" Nullable="false" sap:label="Número de propostas" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ValorTotal" Type="Edm.String" Nullable="false" sap:label="Valor total" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Moeda" Type="Edm.String" Nullable="false" sap:label="Moeda interna" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZFI_AP_PAG_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="DadosPorEmpresaSet" EntityType="ZFI_AP_PAG_SRV.DadosPorEmpresa" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://odksh1700:8000/sap/opu/odata/sap/ZFI_AP_PAG_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://odksh1700:8000/sap/opu/odata/sap/ZFI_AP_PAG_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

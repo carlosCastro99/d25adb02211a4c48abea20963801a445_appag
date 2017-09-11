@@ -1,0 +1,102 @@
+<mvc:View xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m"
+	controllerName="ZODK_AP_PAG.view.DetailProposta" class="view_back">
+	<Page showNavButton="{device>/isPhone}" navButtonPress="onNavBack" class="sapUiFioriObjectPage" title="Detalhe por proposta">
+		<headerContent>
+			<Button icon="sap-icon://refresh" text="Reiniciar" tooltip="Reiniciar proposta" press="handleRefreshProposta"/>
+			<Button icon="sap-icon://history" text="Histórico" tooltip="Histórico de aprovação da proposta" press="handleHistoricoProposta"/>
+		</headerContent>
+		<content>
+			<ObjectHeader title="{header>/LaufdStr} / {header>/Laufi}" number="{header>/Total}" numberUnit="{header>/Moeda}" class="headerProposta"/>
+			<IconTabBar expanded="true" class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter icon="sap-icon://hint">
+						<l:VerticalLayout width="33%">
+							<ObjectIdentifier title="Empresa" text="{header>/Nome} [ {header>/Codigo} ]" class="hLayoutE"/>
+							<ObjectIdentifier title="Nº fornecedores" text="{header>/NFornecedores}" class="hLayoutE"/>
+							<ObjectIdentifier title="Nº faturas total/aprovadas" text="{header>/NFaturas} / {header>/NFaturasAP}" class="hLayoutE"/>
+							<ObjectIdentifier title="Valor aprovado" text="{header>/Aprovado} {header&gt;/Moeda}" class="hLayoutE"/>
+						</l:VerticalLayout>
+						<l:VerticalLayout width="33%">
+							<ObjectIdentifier title="Envio para aprovação" text="{header>/EnvioAprov}" class="hLayoutE"/>
+							<ObjectIdentifier title="Nível de aprovação" text="{header>/Nivel}" class="hLayoutE"/>
+							<ObjectIdentifier title="Status" text="{header>/Status}" class="hLayoutE"/>
+						</l:VerticalLayout>
+						<l:VerticalLayout width="33%">
+							<ObjectIdentifier title="Forma de pagamento" text="{header>/FormaPagamento}" class="hLayoutE"/>
+							<ObjectIdentifier title="Banco empresa" text="{header>/Hbkid}" class="hLayoutE"/>
+							<ObjectIdentifier title="Conta bancária" text="{header>/Ubknt}" class="hLayoutE"/>
+						</l:VerticalLayout>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://notes">
+						<l:VerticalLayout width="50%">
+							<Text text="Comentários proposta:"/>
+							<TextArea width="90%" value="{header>/ComentariosProp}" rows="8" change="onChange" enabled="{header>/CommentEnabled}" maxLength="200"/>
+						</l:VerticalLayout>
+						<l:VerticalLayout width="50%">
+							<Text text="Comentários de níveis anteriores:"/>
+							<core:HTML content="{header>/ComentariosAntigosProp}"/>
+						</l:VerticalLayout>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+			<Panel expandable="true" expanded="false" headerText="Filtro" width="auto" class="sapUiSmallMargin">
+				<content>
+					<l:VerticalLayout width="20%" class="sapUiSmallMargin">
+						<Label text="Código fornecedor"/>
+						<Input id="filtro_forn_codigo"/>
+					</l:VerticalLayout>
+					<l:VerticalLayout width="20%" class="sapUiSmallMargin">
+						<Label text="Descrição fornecedor"/>
+						<Input id="filtro_forn_desc"/>
+					</l:VerticalLayout>
+					<l:VerticalLayout width="20%" class="sapUiSmallMargin">
+						<Label text=""/>
+						<Button width="100%" text="Filtrar" icon="sap-icon://filter" press="handleFilter"/>
+					</l:VerticalLayout>
+					<l:VerticalLayout width="20%" class="sapUiSmallMargin">
+						<Label text=""/>
+						<Button width="100%" text="Limpar filtro" icon="sap-icon://clear-filter" press="handleClearFilter"/>
+					</l:VerticalLayout>
+				</content>
+			</Panel>
+			<Table id="fornTable" items="{ path:'/DadosPorFornecedorSet' }">
+				<columns>
+					<Column width="50px">
+						<Label text=""/>
+					</Column>
+					<Column>
+						<Label text="Fornecedor"/>
+					</Column>
+					<Column>
+						<Label text="Valor aprovado/Total"/>
+					</Column>
+					<Column width="20px">
+						<Label text=""/>
+					</Column>
+					<Column>
+						<Label text="Status"/>
+					</Column>
+					<Column width="230px">
+						<Label text=""/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press="handlePressItem"/>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<Bar>
+				<contentLeft>
+					<Button text="Voltar" icon="sap-icon://nav-back" press="handleBack"/>
+					<Button text="Marcar tudo aprovado" icon="sap-icon://accept" press="pressAcceptAll" visible="{header>/ApFornecedor}"/>
+					<Button text="Marcar tudo rejeitado" icon="sap-icon://decline" press="pressDeclineAll" visible="{header>/ApFornecedor}"/>
+					<Button text="Submeter" icon="sap-icon://payment-approval" press="pressSubmitAll" visible="{header>/ApFornecedor}"/>
+				</contentLeft>
+				<contentRight>
+					<Image src="./images/logo_small.png" class="img_cockpit"/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

@@ -1,0 +1,25 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
+	controllerName="ZODK_AP_PAG.view.Logoff" displayBlock="true" height="100%" class="view_back">
+	<App id="idAppControl">
+		<Page id="page" title="Aprovação de Pagamentos a Fornecedores" showHeader="true" enableScrolling="false">
+			<content id="content_menu">
+				<l:VerticalLayout class="vertical_logoff">
+					<Image src="./images/logo_logoff.png" class="img_logoff"></Image>
+				</l:VerticalLayout>
+				<l:VerticalLayout class="vertical_logoff">
+					<Text text="Logoff efetuado com sucesso, para reiniciar aplicação, clique no botão abaixo." class="txt_logoff"></Text>
+				</l:VerticalLayout>
+			</content>
+			<footer>
+				<Bar>
+					<contentLeft>
+						<Button text="Reiniciar" icon="sap-icon://refresh" press="handleRestart"/>
+					</contentLeft>
+					<contentRight>
+						<Image src="./images/logo_small.png" class="img_cockpit"></Image>
+					</contentRight>
+				</Bar>
+			</footer>
+		</Page>
+	</App>
+</mvc:View>

@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="{comment>/Title}" icon="sap-icon://comment">
+		<content>
+			<TextArea width="100%" value="{comment>/Comentarios}" rows="4" maxLength="200"/>
+			<l:VerticalLayout width="100%" visible="{comment>/RejVisible}">
+				<Table items="{comment>/MotivosRejeicao}">
+					<columns>
+						<Column width="30px">
+							<Label text=""/>
+						</Column>
+						<Column width="320px">
+							<Label text="Motivo de rejeição"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<CheckBox editable="{comment>Edit}" selected="{comment>Check}"/>
+								<Text text="{comment>Descricao}" class="mot_rej"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</l:VerticalLayout>
+		</content>
+		<endButton>
+			<Button text="Fechar" icon="sap-icon://sys-cancel" press="onCommentRejSend"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

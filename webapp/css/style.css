@@ -1,0 +1,68 @@
+.img_cockpit {}
+
+.img_error {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 300px;
+    margin-top: -200px;
+    margin-left: -200px;
+}
+
+.view_back {}
+
+.sapMSplitContainerMaster {}
+
+.logoff_msg {
+    color: darkblue;
+}
+
+.vertical_logoff {
+    position: relative;
+    width: 100%;
+}
+
+.img_logoff {
+    display: block;
+    margin: auto;
+    width: 50%;
+}
+
+.txt_logoff {
+    width: 100%;
+    text-align: center !important;
+    font-weight: bolder;
+}
+
+.item {
+    margin-bottom: 20px;
+}
+
+.matrix_layout {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.alert_label {
+    color: red !important;
+    font-size: 9pt !important;
+}
+
+.empresa_emissora {
+    font-weight: 900;
+}
+
+.hLayoutE {
+    margin: 5px !important;
+}
+
+.headerProposta {
+    padding-top: 1rem !important;
+    padding-right: 2rem !important;
+    padding-bottom: 0rem !important;
+    padding-left: 2rem !important;
+}
+.mot_rej{
+	 margin-top: 15px;
+}

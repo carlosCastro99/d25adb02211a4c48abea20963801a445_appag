@@ -1,0 +1,73 @@
+<mvc:View controllerName="ZODK_AP_PAG.view.HistoricoCompleto" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+	xmlns="sap.m" class="view_back">
+	<Page showNavButton="{device>/isPhone}" navButtonPress="onNavBack" class="sapUiFioriObjectPage" title="Histórico de aprovações completo">
+		<content>
+			<Panel expandable="true" expanded="false" headerText="Filtro" width="auto" class="sapUiSmallMargin">
+				<content>
+					<l:VerticalLayout width="17%" class="sapUiSmallMargin">
+						<Label text="Empresa"></Label>
+						<Input id="filtro_hist_comp_bukrs"></Input>
+					</l:VerticalLayout>
+					<l:VerticalLayout width="17%" class="sapUiSmallMargin">
+						<Label text="Data"></Label>
+						<DatePicker id="filtro_hist_comp_data" valueFormat="dd.MM.yyyy" displayFormat="short"></DatePicker>
+					</l:VerticalLayout>
+					<l:VerticalLayout width="17%" class="sapUiSmallMargin">
+						<Label text="Código"></Label>
+						<Input id="filtro_hist_comp_cod"></Input>
+					</l:VerticalLayout>
+					<l:VerticalLayout width="17%" class="sapUiSmallMargin">
+						<Label text=""></Label>
+						<Button width="100%" text="Filtrar" icon="sap-icon://filter" press="handleFilter"></Button>
+					</l:VerticalLayout>
+					<l:VerticalLayout width="17%" class="sapUiSmallMargin">
+						<Label text=""></Label>
+						<Button width="100%" text="Limpar filtro" icon="sap-icon://clear-filter" press="handleClearFilter"></Button>
+					</l:VerticalLayout>
+				</content>
+			</Panel>
+			<Table id="historicoCompletoTable" items="{ path:'/HistoricoCompletoSet' }">
+				<columns>
+					<Column >
+						<Label text="Empresa"/>
+					</Column>
+					<Column >
+						<Label text="Proposta"/>
+					</Column>
+					<Column >
+						<Label text="Valor aprovado/Total"/>
+					</Column>
+					<Column width="40px">
+						<Label text="Nivel"/>
+					</Column>
+					<Column width="20px">
+						<Label text=""/>
+					</Column>
+					<Column>
+						<Label text="Status"/>
+					</Column>
+					<Column width="200px">
+						<Label text="Comentários"/>
+					</Column>
+					<!--<Column>
+						<Label text="Informação adicional"/>
+					</Column>-->
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press="handlePressItem"></ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<Bar>
+				<contentLeft>
+					<Button text="Menu" icon="sap-icon://nav-back" press="handleBack"/>
+					<Button text="Atualizar" icon="sap-icon://refresh" press="handleRefresh"/>
+				</contentLeft>
+				<contentRight>
+					<Image src="./images/logo_small.png" class="img_cockpit"></Image>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

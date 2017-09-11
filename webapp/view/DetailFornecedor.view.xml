@@ -1,0 +1,93 @@
+<mvc:View controllerName="ZODK_AP_PAG.view.DetailFornecedor" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+	xmlns="sap.m" class="view_back">
+	<Page showNavButton="{device>/isPhone}" navButtonPress="onNavBack" class="sapUiFioriObjectPage" title="Detalhe por fornecedor">
+		<content>
+			<ObjectHeader title="{header>/NomeLifnr} [ {header>/Lifnr} ]" number="{header>/Total}" numberUnit="{header>/Moeda}"></ObjectHeader>
+			<IconTabBar expanded="true" class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter icon="sap-icon://hint">
+						<l:VerticalLayout width="50%">
+							<ObjectIdentifier title="Empresa" text="{header>/Nome} [ {header>/Codigo} ]" class="hLayoutE"/>
+							<ObjectIdentifier title="Proposta" text="{header>/LaufdStr} / {header>/Laufi}" class="hLayoutE"/>
+						</l:VerticalLayout>
+						<l:VerticalLayout width="50%">
+							<ObjectIdentifier title="Nº faturas" text="{header>/NFaturas}" class="hLayoutE"/>
+							<ObjectIdentifier title="Nível de aprovação" text="{header>/Nivel}" class="hLayoutE"/>
+						</l:VerticalLayout>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://notes">
+						<l:VerticalLayout width="50%">
+							<Text text="Comentários fornecedor:"/>
+							<TextArea width="90%" value="{header>/ComentariosForn}" rows="8" change="onChange" enabled="{header>/CommentEnabled}"  maxLength="200"/>
+						</l:VerticalLayout>
+						<l:VerticalLayout width="50%">
+							<Text text="Comentários de níveis anteriores:"/>
+							<core:HTML content="{header>/ComentariosAntigosForn}"/>
+						</l:VerticalLayout>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+			<Panel expandable="true" expanded="false" headerText="Filtro" width="auto" class="sapUiSmallMargin">
+				<content>
+					<l:VerticalLayout width="20%" class="sapUiSmallMargin">
+						<Label text="Fatura"></Label>
+						<Input id="filtro_fatura"></Input>
+					</l:VerticalLayout>
+					<l:VerticalLayout width="20%" class="sapUiSmallMargin">
+						<Label text="Ano"></Label>
+						<Input id="filtro_ano"></Input>
+					</l:VerticalLayout>
+					<l:VerticalLayout width="20%" class="sapUiSmallMargin">
+						<Label text=""></Label>
+						<Button width="100%" text="Filtrar" icon="sap-icon://filter" press="handleFilter"></Button>
+					</l:VerticalLayout>
+					<l:VerticalLayout width="20%" class="sapUiSmallMargin">
+						<Label text=""></Label>
+						<Button width="100%" text="Limpar filtro" icon="sap-icon://clear-filter" press="handleClearFilter"></Button>
+					</l:VerticalLayout>
+				</content>
+			</Panel>
+			<Table id="faturasTable" items="{ path:'/DadosPorFaturaSet' }">
+				<columns>
+					<Column >
+						<Label text="Fatura"/>
+					</Column>
+					<Column >
+						<Label text="Montante/Moeda"/>
+					</Column>
+					<Column width="20px">
+						<Label text=""/>
+					</Column>
+					<Column >
+						<Label text="Status"/>
+					</Column>
+					<Column width="230px">
+						<Label text=""/>
+					</Column>
+					<Column width="40px">
+						<Label text=""/>
+					</Column>
+					<Column width="200px">
+						<Label text=""/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press="handlePressItem"></ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<Bar>
+				<contentLeft>
+					<Button text="Voltar" icon="sap-icon://nav-back" press="handleBack"/>
+					<Button text="Marcar tudo aprovado" icon="sap-icon://accept" press="pressAcceptAll" visible="{header>/ApFatura}"/>
+					<Button text="Marcar tudo rejeitado" icon="sap-icon://decline" press="pressDeclineAll" visible="{header>/ApFatura}"/>
+					<Button text="Submeter" icon="sap-icon://payment-approval" press="pressSubmitAll" visible="{header>/ApFatura}"/>
+				</contentLeft>
+				<contentRight>
+					<Image src="./images/logo_small.png" class="img_cockpit"></Image>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

@@ -1,0 +1,11 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Comentários Aprovadores Anteriores" icon="sap-icon://comment">
+		<content>
+			<core:HTML content="{comment>/Comentarios}">
+			</core:HTML>
+		</content>
+		<endButton>
+			<Button text="Fechar" icon="sap-icon://sys-cancel" press="onCommentClose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

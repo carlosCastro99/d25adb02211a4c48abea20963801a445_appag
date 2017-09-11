@@ -1,0 +1,93 @@
+<mvc:View controllerName="ZODK_AP_PAG.view.DetailMobile" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+	xmlns="sap.m" class="view_back">
+	<Page class="sapUiFioriObjectPage" title="Detalhe por empresa">
+		<content>
+			<ObjectHeader title="{header>/Nome}" number="{header>/Total}" numberUnit="{header>/Moeda}"
+				icon="{= ${header>/Rfc} === '' ? 'sap-icon://it-host' : 'sap-icon://connected' }">
+				<ObjectAttribute title="" text="[ {header>/Codigo} ]"/>
+				<ObjectAttribute title="Local" text="{header>/Local}"/>
+				<ObjectAttribute title="Nº propostas" text="{header>/NPropostas}"/>
+			</ObjectHeader>
+			<Panel expandable="true" expanded="false" headerText="Filtro" width="auto" class="sapUiSmallMargin">
+				<content>
+					<l:VerticalLayout width="20%" class="sapUiSmallMargin">
+						<Label text="Data"></Label>
+						<DatePicker id="filtro_prop_data" valueFormat="dd.MM.yyyy" displayFormat="short"></DatePicker>
+					</l:VerticalLayout>
+					<l:VerticalLayout width="20%" class="sapUiSmallMargin">
+						<Label text="Código"></Label>
+						<Input id="filtro_prop_cod"></Input>
+					</l:VerticalLayout>
+					<l:VerticalLayout width="20%" class="sapUiSmallMargin">
+						<Label text="Nível"></Label>
+						<Input id="filtro_prop_nivel"></Input>
+					</l:VerticalLayout>
+					<l:VerticalLayout width="20%" class="sapUiSmallMargin"></l:VerticalLayout>
+					<l:VerticalLayout width="20%" class="sapUiSmallMargin">
+						<Label text=""></Label>
+						<Button width="100%" text="Filtrar" icon="sap-icon://filter" press="handleFilter"></Button>
+					</l:VerticalLayout>
+					<l:VerticalLayout width="20%" class="sapUiSmallMargin">
+						<Label text=""></Label>
+						<Button width="100%" text="Limpar filtro" icon="sap-icon://clear-filter" press="handleClearFilter"></Button>
+					</l:VerticalLayout>
+				</content>
+			</Panel>
+			<Table id="propostasTableMobile" items="{ path:'/DadosPorPropostaSet' }">
+				<columns>
+					<Column width="50px">
+						<Label text=""/>
+					</Column>
+					<Column >
+						<Label text="Data Exec./Identif."/>
+					</Column>
+					<Column >
+						<Label text="Valor aprovado/Total"/>
+					</Column>
+					<Column width="20px">
+						<Label text=""/>
+					</Column>
+					<Column >
+						<Label text="Status"/>
+					</Column>
+					<Column width="50px">
+						<Label text="Nível"/>
+					</Column>
+					<Column width="50px">
+						<Label text="MP" tooltip="Forma de pagamento"/>
+					</Column>
+					<!--<Column width="120px" visible="{header>/ApProposta}">
+						<Label text=""/>
+					</Column>
+					<Column width="40px" visible="{header>/ApProposta}">
+						<Label text=""/>
+					</Column>
+					<Column width="40px">
+						<Label text=""/>
+					</Column>-->
+					<Column width="230px">
+						<Label text=""/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press="handlePressItem"></ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<Bar>
+				<contentLeft>
+					<Button text="Voltar" icon="sap-icon://nav-back" press="handleBack"/>
+					<Button text="Marcar tudo aprovado" icon="sap-icon://accept" press="pressAcceptAll" visible="{header>/ApProposta}"/>
+					<Button text="Marcar tudo rejeitado" icon="sap-icon://decline" press="pressDeclineAll" visible="{header>/ApProposta}"/>
+					<Button text="Submeter" icon="sap-icon://payment-approval" press="pressSubmitAll" visible="{header>/ApProposta}"/>
+					<core:Icon color="#CA4747" src="sap-icon://alert" visible="{header>/Msg_visible}"></core:Icon>
+					<Text visible="{header>/Msg_visible}" text="{header>/Error_msg}"></Text>
+				</contentLeft>
+				<contentRight>
+					<Image src="./images/logo_small.png" class="img_cockpit"></Image>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

@@ -1,0 +1,40 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Detalhe da proposta" icon="sap-icon://history">
+		<content>
+			<Table items="{ path:'/HistoricoUserSet' }" width="1200px">
+				<columns>
+					<Column >
+						<Label text="Fornecedor"/>
+					</Column>
+					<Column >
+						<Label text="Fatura"/>
+					</Column>
+					<Column >
+						<Label text="Valor / Moeda"/>
+					</Column>
+					<Column width="40px">
+						<Label text="Nivel"/>
+					</Column>
+					<Column width="20px">
+						<Label text=""/>
+					</Column>
+					<Column width="200px">
+						<Label text="Comentários Fornecedor"/>
+					</Column>
+					<Column width="200px">
+						<Label text="Comentários Fatura"/>
+					</Column>
+					<Column width="200px">
+						<Label text="Informação adicional"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press="handlePressItem"></ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<endButton>
+			<Button text="Fechar" icon="sap-icon://sys-cancel" press="onDetPropCancel"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
